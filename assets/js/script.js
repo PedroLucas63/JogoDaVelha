@@ -47,14 +47,48 @@ function DefinirEstiloPadrão(){
     esquemaDeCores = window.matchMedia('(prefers-color-scheme: dark)')
 
     //* Verifica qual o modo de cor do dispositivo:
-    if(esquemaDeCores.matches){
-        //* Coloca a imagem da lua:
-        imgEstilo.setAttribute("src", "/assets/images/lua.png");
+    if(localStorage.theme === "dark" || (("theme" in localStorage) && esquemaDeCores.matches)){
+        // Chama a função de deixar no modo escuro:
+        AtivarModoEscuro();
     }
     else{
-        //* Coloca a imagem do sol:
-        imgEstilo.setAttribute("src", "/assets/images/sol.png");
+        // Chama a função de deixar no modo claro:
+        AtivarModoClaro();
     }
+}
+
+//! Função de ativar o modo escuro:
+function AtivarModoEscuro(){
+    //* Adiciona a classe de dark na página:
+    document.documentElement.classList.add("dark");
+
+    //* Coloca a imagem da lua:
+    imgEstilo.setAttribute("src", "/assets/images/lua.png");
+
+    //* Salva a configuração no computador:
+    localStorage.theme = "dark";
+
+    //* Define que o botão deverá ter a função de ativar o modo claro:
+    buttonEstilo.onclick = function(){
+        AtivarModoClaro();
+    };
+}
+
+//! Função de ativar o modo claro:
+function AtivarModoClaro(){
+    //* Remove a classe de dark na página:
+    document.documentElement.classList.remove("dark");
+
+    //* Coloca a imagem do sol:
+    imgEstilo.setAttribute("src", "/assets/images/sol.png");
+
+    //* Salva a configuração no computador:
+    localStorage.removeItem("theme");
+
+    //* Define que o botão deverá ter a função de ativar o modo escuro:
+    buttonEstilo.onclick = function(){
+        AtivarModoEscuro();
+    };
 }
 
 //! Função de definir a altura dos blocos pela largura:
