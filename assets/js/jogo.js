@@ -9,6 +9,73 @@ var jogadasDoO = [];
 //! Variavel que guarda a condição da vez:
 var condicao;
 
+//! Variavel auxiliar na quantidade de jogadores:
+var jogador = 0;
+
+//! Função que recebe os nomes dos jogadores:
+function ExibirPrompt(){
+    //* Soma 1 na variavel jogador:
+    jogador++;
+
+    //* Cria a div auxiliar para pedir as informações:
+    var div = document.createElement("div");
+    div.id = "prompt";
+    div.classList.add("absolute", "w-full", "h-full", "flex", "justify-center", "items-center", "bg-slate-700/[.6]");
+
+    //* Cria a estrutura do prompt:
+    var janelaPrompt = `
+        <div class="bg-slate-600 text-gray-200 rounded-md shadow-md shadow-gray-600 mx-3">
+            <div class="bg-slate-800 py-2 px-3 rounded-t-md font-bold text-lg">
+                <h2>Jogador ${jogador}</h2>
+            </div>
+            <div class="flex flex-wrap justify-end py-2 px-3">
+                <label for="nome" class="font-semibold w-full">Nome:</label>
+                <input type="text" name="nome" id="nome" class="w-full rounded border-none px-2 py-1 ring-2 ring-slate-800 text-gray-700">
+
+                <button onclick="ReceberJogador(${jogador})" class="text-right py-2 px-5 mt-2 rounded bg-slate-800">Salvar</button>
+            </div>
+        </div>
+    `;
+
+    //* Insere a estrutura modelo na div:
+    div.innerHTML = janelaPrompt;
+
+    //* Exibe os dados:
+    document.body.appendChild(div);
+}
+
+//! Função que define o nome dos jogadores:
+function ReceberJogador(numero){
+    //* Pega o nome escrito:
+    var nome = document.getElementById("nome").value;
+
+    //* Remove a div da página:
+    document.getElementById("prompt").remove();
+
+    //* Verifica qual é o jogador:
+    if(numero == 1){
+        // Pega os elementos do jogador:
+        divJogador = document.getElementById("jogador1");
+        itemDeLista = divJogador.getElementsByClassName("nomeDoJogador")[0];
+        paragrafoNome = itemDeLista.getElementsByTagName("p")[0];
+
+        // Modifica o nome:
+        paragrafoNome.innerText = nome;
+
+        // Pede mais um nome:
+        ExibirPrompt();
+    }
+    else{
+        // Pega os elementos do jogador:
+        divJogador = document.getElementById("jogador2");
+        itemDeLista = divJogador.getElementsByClassName("nomeDoJogador")[0];
+        paragrafoNome = itemDeLista.getElementsByTagName("p")[0];
+
+        //Modifica o nome:
+        paragrafoNome.innerText = nome;
+    }
+}
+
 //! Função que sorteia o jogador que começa:
 function SortearJogador(){
     //* Faz o sorteio de um número boolean:
@@ -130,8 +197,25 @@ function ContarVitoria(jogador){
     //* Aumenta 1 na pontuação:
     pontosJogador.innerText = parseInt(pontosJogador.innerText) + 1;
 
+    //* Reproduz música de vitória:
+    var musicaVitoria = new Audio("/assets/sounds/vitoria.mp3");
+    musicaVitoria.volume = 0.1;
+    musicaVitoria.play();
+
+    //* Exibe os confetis:
+    var imagem = document.createElement("img");
+    imagem.src = "/assets/images/confetti.gif";
+    imagem.id = "imagemTemporaria";
+    imagem.classList.add("absolute", "bottom-1/2");
+    document.body.appendChild(imagem);
+
     //* Faz a chamada da função que limpa o Jogos:
     LimparJogo();
+
+    //* Remove a imagem após um determinado tempo:
+    setInterval(function(){
+        document.getElementById("imagemTemporaria").remove();
+    }, 2750);
 }
 
 //! Função de verificar se ocorreu um empate:
@@ -141,6 +225,11 @@ function VerificarEmpate(){
 
     //* Verifica se a quantidade de jogadas é igual a 9:
     if(todasJogadas.length == 9){
+        // Toca música de empate:
+        var musicaEmpate = new Audio("/assets/sounds/empate.mp3");
+        musicaEmpate.volume = 0.1
+        musicaEmpate.play();
+
         // Limpa o jogo:
         LimparJogo();
     }
@@ -190,3 +279,6 @@ function AtualizarVezDoJogador(){
 //! Sorteia um jogador e atualiza a vez:
 SortearJogador();
 AtualizarVezDoJogador();
+
+//! Exibe os prompt do nome dos jogadores:
+ExibirPrompt();
