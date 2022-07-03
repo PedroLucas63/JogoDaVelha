@@ -53,16 +53,16 @@
             <!--Seção de jogadores e a pontuação-->
             <section class="h-20 flex justify-between items-center px-3 w-full md:justify-center">
                 <!--Jogador 1-->
-                <div class="border-2 border-gray-300 rounded py-2 mx-1 ring-2 ring-slate-200 dark:border-slate-900 dark:ring-gray-200 md:mx-8">
+                <div class="border-2 border-gray-300 rounded py-2 mx-1 ring-2 ring-slate-200 dark:border-slate-900 dark:ring-gray-200 md:mx-8" id="jogador1">
                     <!--Informações do primeiro jogador-->
                     <ul class="flex justify-between text-xl">
-                        <li class="px-2 flex justify-center items-center">
+                        <li class="px-2 text-2xl flex justify-center items-center">
                             <ion-icon class="text-red-500" name="close-outline"></ion-icon>
                         </li>
-                        <li class="border-x border-gray-300 px-3 text-slate-900 font-medium dark:border-gray-900 dark:text-gray-200">
+                        <li class="border-x border-gray-300 px-3 text-slate-900 font-medium dark:border-gray-900 dark:text-gray-200 nomeDoJogador">
                             <p>Player 1</p>
                         </li>
-                        <li class="px-2 text-slate-900 flex justify-center items-center dark:text-gray-200">
+                        <li class="px-2 text-slate-900 flex justify-center items-center dark:text-gray-200 pontosDoJogador">
                             <p>
                                 0
                             </p>  
@@ -71,16 +71,16 @@
                 </div>
                 
                 <!--Jogador 2-->
-                <div class="border-2 border-gray-300 rounded py-2 mx-1 ring-2 ring-slate-200 dark:border-slate-900 dark:ring-gray-200 md:mx-8">
+                <div class="border-2 border-gray-300 rounded py-2 mx-1 ring-2 ring-slate-200 dark:border-slate-900 dark:ring-gray-200 md:mx-8" id="jogador2">
                     <!--Informações do segundo jogador-->
                     <ul class="flex justify-between text-xl">
                         <li class="px-2 flex justify-center items-center">
                             <ion-icon class="text-blue-400" name="ellipse-outline"></ion-icon>
                         </li>
-                        <li class="border-x border-gray-300 px-3 text-slate-900 font-medium dark:border-gray-900 dark:text-gray-200">
+                        <li class="border-x border-gray-300 px-3 text-slate-900 font-medium dark:border-gray-900 dark:text-gray-200 nomeDoJogador">
                             <p>Player 2</p>
                         </li>
-                        <li class="px-2 text-slate-900 flex justify-center items-center dark:text-gray-200">
+                        <li class="px-2 text-slate-900 flex justify-center items-center dark:text-gray-200 pontosDoJogador">
                             <p>
                                 0
                             </p>  
@@ -92,15 +92,15 @@
             <!--Seção do jogo-->
             <section class="flex flex-wrap justify-center my-4 w-full md:w-1/3">
                 <!--Blocos do jogos-->
-                <div id="1x1" class="w-1/3 bloco"></div>
-                <div id="1x2" class="border-x-8 border-gray-400 dark:border-slate-900 w-1/3  bloco"></div>
-                <div id="1x3" class="w-1/3 bloco"></div>
-                <div id="2x1" class="border-y-8 border-gray-400 dark:border-slate-900 w-1/3 bloco"></div>
-                <div id="2x2" class="border-8 border-gray-400 dark:border-slate-900 w-1/3 bloco"></div>
-                <div id="2x3" class="border-y-8 border-gray-400 dark:border-slate-900 w-1/3 bloco"></div>
-                <div id="3x1" class="w-1/3 bloco"></div>
-                <div id="3x2" class="border-x-8 border-gray-400 dark:border-slate-900 w-1/3 bloco"></div>
-                <div id="3x3" class=" w-1/3 bloco"></div>
+                <div id="1" class="w-1/3 flex justify-center items-center bloco" onclick="InserirJogada(this)"></div>
+                <div id="2" class="border-x-8 border-gray-400 dark:border-slate-900 w-1/3  flex justify-center items-center bloco" onclick="InserirJogada(this)"></div>
+                <div id="3" class="w-1/3 flex justify-center items-center bloco" onclick="InserirJogada(this)"></div>
+                <div id="4" class="border-y-8 border-gray-400 dark:border-slate-900 w-1/3 flex justify-center items-center bloco" onclick="InserirJogada(this)"></div>
+                <div id="5" class="border-8 border-gray-400 dark:border-slate-900 w-1/3 flex justify-center items-center bloco" onclick="InserirJogada(this)"></div>
+                <div id="6" class="border-y-8 border-gray-400 dark:border-slate-900 w-1/3 flex justify-center items-center bloco" onclick="InserirJogada(this)"></div>
+                <div id="7" class="w-1/3 flex justify-center items-center bloco" onclick="InserirJogada(this)"></div>
+                <div id="8" class="border-x-8 border-gray-400 dark:border-slate-900 w-1/3 flex justify-center items-center bloco" onclick="InserirJogada(this)"></div>
+                <div id="9" class=" w-1/3 flex justify-center items-center bloco" onclick="InserirJogada(this)"></div>
             </section>
         </main>
 
@@ -113,5 +113,6 @@
 
         <!--Importação do Script-->
 	    <script src="assets/js/script.js"></script>
+        <script src="assets/js/jogo.js"></script>
     </body>
 </html>
