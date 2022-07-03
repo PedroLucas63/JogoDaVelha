@@ -14,6 +14,7 @@
         <!--Configurações de estilização-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+        <meta name="theme-color" content="">
 
         <!--Importação do TailwindCSS-->
         <script src="https://cdn.tailwindcss.com"></script>
@@ -33,9 +34,15 @@
                 </figure>
             </section>
 
-            <!--Seção de música-->
+            <!--Seção de botões-->
             <section class="h-1/2">
-                <button onclick="" id="buttonMusica" class="h-full">
+                <!--Botão do modo escuro/claro-->
+                <button onclick="" id="buttonEstilo" class="h-full mx-4">
+                    <img alt="Estilo" title="Estilo" id="imgEstilo" class="h-full">
+                </button>
+
+                <!--Botão de música-->
+                <button id="buttonMusica" class="h-full">
                     <img alt="Música" title="Música" id="imgMusica" class="h-full">
                 </button>
             </section>

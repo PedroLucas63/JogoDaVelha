@@ -1,7 +1,7 @@
 //! Importação da música:
 const musica = new Audio("/assets/sounds/musica.mp3");
 
-//! Pega o elemento de input que controla a música:
+//! Pega o elemento de button e img que controla a música:
 const buttonMusica = document.getElementById("buttonMusica");
 const imgMusica = document.getElementById("imgMusica");
 
@@ -37,6 +37,26 @@ function PauseMusica(){
     };
 }
 
+//! Pega o elemento de button e img que controla a cor:
+const buttonEstilo = document.getElementById("buttonEstilo");
+const imgEstilo = document.getElementById("imgEstilo");
+
+//! Função que define o estilo claro ou escuro para o site:
+function DefinirEstiloPadrão(){
+    //* Pega o esquema de cores do usuário:
+    esquemaDeCores = window.matchMedia('(prefers-color-scheme: dark)')
+
+    //* Verifica qual o modo de cor do dispositivo:
+    if(esquemaDeCores.matches){
+        //* Coloca a imagem da lua:
+        imgEstilo.setAttribute("src", "/assets/images/lua.png");
+    }
+    else{
+        //* Coloca a imagem do sol:
+        imgEstilo.setAttribute("src", "/assets/images/sol.png");
+    }
+}
+
 //! Função de definir a altura dos blocos pela largura:
 function DefinirAltura(){
     //* Pega todos os blocos com a classe passada:
@@ -50,14 +70,20 @@ function DefinirAltura(){
     });
 }
 
-//! Função caso a tela seja redimensionada:
+//! Comando caso a tela seja redimensionada:
 document.body.onresize = function(){
     //* Executa a função de definir a altura dos blocos:
     DefinirAltura();
 }
+
+//! Comando caso o dispositivo mude de cor padrão:
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", DefinirEstiloPadrão);
 
 //! Executa a função de reproduzir a música:
 PauseMusica();
 
 //! Executa a função que define as alturas:
 DefinirAltura();
+
+//! Executa a função de pegar qual o tema em uso:
+DefinirEstiloPadrão();
