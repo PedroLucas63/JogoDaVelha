@@ -14,22 +14,25 @@
         <!--Configurações de estilização-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+        <!--Importação do TailwindCSS-->
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
+    <body class="bg-gray-100 dark:bg-slate-800">
         <!--Cabeçalho da página-->
-        <header>
+        <header class="h-20 flex justify-between px-3 items-center bg-gray-200 dark:bg-slate-900 drop-shadow-md md:px-6">
             <!--Seção do Logo-->
-            <section>
-                <figure>
-                    <img src="assets/images/logo.png" alt="Logo do Jogo da Velha" title="Jogo da Velha">
-                    <figcaption>Logo do Jogo da Velha</figcaption>
+            <section class="h-4/5">
+                <figure class="h-full">
+                    <img src="assets/images/logo.png" alt="Logo do Jogo da Velha" title="Jogo da Velha" class="h-full">
+                    <figcaption class="hidden">Logo do Jogo da Velha</figcaption>
                 </figure>
             </section>
 
             <!--Seção de música-->
-            <section>
-                <button onclick="" id="buttonMusica">
-                    <img alt="Música" title="Música" id="imgMusica">
+            <section class="h-1/2">
+                <button onclick="" id="buttonMusica" class="h-full">
+                    <img alt="Música" title="Música" id="imgMusica" class="h-full">
                 </button>
             </section>
         </header>
