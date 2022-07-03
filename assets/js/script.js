@@ -19,7 +19,7 @@ function PauseMusica(){
         musica.play();
 
         // Define o volume:
-        musica.volume = 0.01;
+        musica.volume = 0.05;
 
         // Define a música como Loop:
         musica.loop = true;
@@ -37,5 +37,27 @@ function PauseMusica(){
     };
 }
 
+//! Função de definir a altura dos blocos pela largura:
+function DefinirAltura(){
+    //* Pega todos os blocos com a classe passada:
+    const blocos = document.getElementsByClassName("bloco");
+    var arrayBlocos = [...blocos];
+
+    //* Percorre o array de blocos:
+    arrayBlocos.forEach(function(bloco){
+        // Define a altura baseado na largura:
+        bloco.style.height = bloco.offsetWidth+"px";
+    });
+}
+
+//! Função caso a tela seja redimensionada:
+document.body.onresize = function(){
+    //* Executa a função de definir a altura dos blocos:
+    DefinirAltura();
+}
+
 //! Executa a função de reproduzir a música:
 PauseMusica();
+
+//! Executa a função que define as alturas:
+DefinirAltura();
